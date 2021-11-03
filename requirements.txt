@@ -34,3 +34,6 @@ wheel>=0.33.6
 
 #Trends data
 pytrends
+
+#Hyperparameter tuning
+optuna
