@@ -1,0 +1,1 @@
+This directory has all the Google trends data downloaded for the test cases 
