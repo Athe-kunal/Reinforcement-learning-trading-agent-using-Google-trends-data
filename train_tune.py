@@ -20,8 +20,6 @@ import os
 pytrends_file = os.listdir("Pytrends")
 
 # For ethereum
-# ticker_list = ['ETH-USD']
-# names = ['Ethereum']
 # train_start_date = '2016-01-01'
 # train_end_date = '2019-12-31'
 
@@ -55,8 +53,6 @@ pytrends_file = os.listdir("Pytrends")
 # test_start_date = '2021-01-01'
 # test_end_date = '2021-09-30'
 
-ticker_list = ['AMZN'] #Specify your ticker here
-names = ['Amazon'] #And name of the company
 train_start_date = '2012-01-01'
 train_end_date = '2016-12-31'
 
@@ -180,7 +176,7 @@ os.makedirs(f'{names[0]}_acc_val', exist_ok=True)
 os.makedirs(f'{names[0]}_models', exist_ok=True)
 
 
-def train_cases():
+def train_cases(ticker_list,names):
 
   train, val, trade = preprocess_split(
       train_start_date, test_end_date, ticker_list, names)
@@ -263,5 +259,8 @@ def train_cases():
         f'{names[0]}_acc_val/Action_Value_{ctrl}_{names[0]}_new.csv')
 
 if __name__ == '__main__':
-    train_cases()
+    #It is only for single stock trading
+    ticker_list = ['AMZN'] #Specify your ticker here
+    names = ['Amazon'] #And name of the company
+    train_cases(ticker_list,names)
 
