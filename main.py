@@ -10,4 +10,4 @@ if __name__ == '__main__':
     names = [args.name]
     tickers = [args.ticker]
     
-    train_cases(names,tickers)
+    train_cases(tickers,names)
