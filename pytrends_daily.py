@@ -2,7 +2,7 @@ from datetime import date, timedelta
 from functools import partial
 from time import sleep
 from calendar import monthrange
-
+import argparse
 import pandas as pd
 
 from pytrends.exceptions import ResponseError
@@ -72,14 +72,24 @@ def get_daily_unscaled_data(word: str,
     return daily
 
 if __name__ == '__main__':
-    name = 'Apple'
-    cat = 5
+    parser = argparse.ArgumentParser(description='Download Pytrends data')
+    parser.add_argument('--name',type=str,help='Name of the asset that you want to download',default='Apple')
+    parser.add_argument('--start_year',type=int,default=2012)
+    parser.add_argument('--start_month',type=int,default=1)
+    parser.add_argument('--stop_year',type=int,default=2021)
+    parser.add_argument('--stop_month',type=int,default=10)
+    parser.add_argument('--cat',type=int,help='Category for the asset',default=0)
+    args = parser.parse_args()
+
+    name = args.name
+    cat = args.cat
+    
     df = get_daily_unscaled_data(
         word=name,
-        start_year=2012,
-        start_mon=1,
-        stop_year=2020,
-        stop_mon=1,
+        start_year=args.start_year,
+        start_mon=args.start_month,
+        stop_year=args.stop_year,
+        stop_mon=args.stop_month,
         geo='',
         cat=cat,
     )
