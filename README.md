@@ -3,7 +3,17 @@ This project is part of my internship at ULiege on Deep RL in stock market tradi
 
 If you want to change the ticker symbol and name for trends data, you can do it from the train_tune.py file by uncommenting the required timeframe and ticker symbol. Also, here is the link to my [report](https://docs.google.com/document/d/12Xhjfg7Y4EkSi8o1D6ilvjdvQuKFaxEg9WyZYnFXfes/edit?usp=sharing)
 
-First install all the dependences
+Start with cloning the repository
+```
+git clone https://github.com/Athe-kunal/Reinforcement-learning-trading-agent-using-Google-trends-data.git
+```
+
+The jump to the directory
+```
+cd Reinforcement-learning-trading-agent-using-Google-trends-data/
+```
+
+Install all the dependences
 ```
 pip install -r requirements.txt
 ```
