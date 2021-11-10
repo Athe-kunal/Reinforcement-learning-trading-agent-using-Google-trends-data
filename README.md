@@ -1,7 +1,7 @@
 # Google trends data for automated stock trading using Reinforcement learning
 This project is part of my internship at ULiege on Deep RL in stock market trading with Professor [Damien Ernst](https://scholar.google.com/citations?user=91ZxYSsAAAAJ&hl=en) . Here I am validating the effectiveness of google trends data for an automated stock trading agent using the [FinRL library](https://github.com/AI4Finance-Foundation/FinRL).
 
-If you want to change the ticker symbol and name for trends data, you can do it from the train_tune.py file by uncommenting the required timeframe and ticker symbol. Also, here is the link to my [report](https://docs.google.com/document/d/12Xhjfg7Y4EkSi8o1D6ilvjdvQuKFaxEg9WyZYnFXfes/edit?usp=sharing)
+If you want to change the ticker symbol and name for trends data, you can do it from the train_tune.py file by uncommenting the required timeframe and ticker symbol. Also, here is the link to my [Medium article](https://athekunal.medium.com/google-trends-data-for-automated-stock-trading-using-reinforcement-learning-9c0fd6d00678)
 
 Start with cloning the repository
 ```
