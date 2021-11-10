@@ -93,4 +93,4 @@ if __name__ == '__main__':
         geo='',
         cat=cat,
     )
-    df.to_csv(f'Pytrends_Data/{name}_{cat}.csv')
+    df.to_csv(f'Pytrends/{name}_{cat}.csv')
