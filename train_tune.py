@@ -258,9 +258,9 @@ def train_cases(ticker_list,names):
     df_actions.to_csv(
         f'{names[0]}_acc_val/Action_Value_{ctrl}_{names[0]}_new.csv')
 
-if __name__ == '__main__':
-    #It is only for single stock trading
-    ticker_list = ['AMZN'] #Specify your ticker here
-    names = ['Amazon'] #And name of the company
-    train_cases(ticker_list,names)
+# if __name__ == '__main__':
+#     #It is only for single stock trading
+#     ticker_list = ['AMZN'] #Specify your ticker here
+#     names = ['Amazon'] #And name of the company
+#     train_cases(ticker_list,names)
 
