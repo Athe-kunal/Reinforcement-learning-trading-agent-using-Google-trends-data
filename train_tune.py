@@ -171,13 +171,13 @@ def calculate_sharpe(df):
     return 0
 
 
-total_timesteps = 30000
-os.makedirs(f'{names[0]}_acc_val', exist_ok=True)
-os.makedirs(f'{names[0]}_models', exist_ok=True)
+
 
 
 def train_cases(ticker_list,names):
-
+  total_timesteps = 30000
+  os.makedirs(f'{names[0]}_acc_val', exist_ok=True)
+  os.makedirs(f'{names[0]}_models', exist_ok=True)
   train, val, trade = preprocess_split(
       train_start_date, test_end_date, ticker_list, names)
   ctrl_str = ['ohlcv','ohlcv_cmf_pytrends','ohlcv_Pytrends','ohlcv_cmf_into_pytrends','ohlcv_cmf_into_pytrends_100','ohlcv_TI']
