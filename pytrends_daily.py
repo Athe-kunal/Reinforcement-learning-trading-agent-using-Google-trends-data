@@ -73,12 +73,12 @@ def get_daily_unscaled_data(word: str,
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Download Pytrends data')
-    parser.add_argument('--name',type=str,help='Name of the asset that you want to download',default='Apple')
-    parser.add_argument('--start_year',type=int,default=2012)
-    parser.add_argument('--start_month',type=int,default=1)
-    parser.add_argument('--stop_year',type=int,default=2021)
-    parser.add_argument('--stop_month',type=int,default=10)
-    parser.add_argument('--cat',type=int,help='Category for the asset',default=0)
+    parser.add_argument('-n','--name',type=str,help='Name of the asset that you want to download',default='Apple')
+    parser.add_argument('-say','--start_year',type=int,default=2012)
+    parser.add_argument('-sam','--start_month',type=int,default=1)
+    parser.add_argument('-soy','--stop_year',type=int,default=2021)
+    parser.add_argument('-som','--stop_month',type=int,default=10)
+    parser.add_argument('-c','--cat',type=int,help='Category for the asset',default=0)
     args = parser.parse_args()
 
     name = args.name
