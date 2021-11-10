@@ -17,4 +17,9 @@ Example for Apple to download data for month of October in 2021
 python pytrends_daily.py -n 'Apple' -say 2021 -sam 10 -soy 2021 -som 10 -c 0
 ```
 
+Now you can run different cases and save results in your Account value folder
 
+```
+python main.py -n 'Amazon' -t 'AMZN'
+```
+Note: The default environment is for a single stock trading only
