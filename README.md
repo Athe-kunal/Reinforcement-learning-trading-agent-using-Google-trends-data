@@ -10,11 +10,11 @@ pip install -r requirements.txt
 Then if you want to download the pytrends data apart from what is present inside the Pytrends folder
 First do it to get help of CLI in downloading trends data
 ```
-python .\pytrends_daily.py -h
+python pytrends_daily.py -h
 ```
 Example for Apple to download data for month of October in 2021
 ```
-python .\pytrends_daily.py -n 'Apple' -say 2021 -sam 10 -soy 2021 -som 10 -c 0
+python pytrends_daily.py -n 'Apple' -say 2021 -sam 10 -soy 2021 -som 10 -c 0
 ```
 
 
