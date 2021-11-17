@@ -79,6 +79,7 @@ if __name__ == '__main__':
     parser.add_argument('-soy','--stop_year',type=int,default=2021)
     parser.add_argument('-som','--stop_month',type=int,default=10)
     parser.add_argument('-c','--cat',type=int,help='Category for the asset',default=0)
+    parser.add_argument('-t','--ticker',type=str,help='ticker symbol',default='AAPL')
     args = parser.parse_args()
 
     name = args.name
@@ -93,4 +94,4 @@ if __name__ == '__main__':
         geo='',
         cat=cat,
     )
-    df.to_csv(f'Pytrends/{name}_{cat}.csv')
+    df.to_csv(f'Pytrends/{args.ticker}_{cat}.csv')
