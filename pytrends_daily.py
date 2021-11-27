@@ -74,6 +74,7 @@ def get_daily_unscaled_data(word: str,
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Download Pytrends data')
     parser.add_argument('-n','--name',type=str,help='Name of the asset that you want to download',default='Apple')
+    parser.add_argument('-t','--ticker',type=str,help='Ticker name',default='AAPL')
     parser.add_argument('-say','--start_year',type=int,default=2012)
     parser.add_argument('-sam','--start_month',type=int,default=1)
     parser.add_argument('-soy','--stop_year',type=int,default=2021)
@@ -94,4 +95,4 @@ if __name__ == '__main__':
         geo='',
         cat=cat,
     )
-    df.to_csv(f'Pytrends/{name}_{cat}.csv')
+    df.to_csv(f'Pytrends/{args.ticker}_{cat}.csv')
