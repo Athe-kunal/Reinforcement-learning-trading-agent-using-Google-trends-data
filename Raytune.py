@@ -273,14 +273,85 @@ class PopulationBasedRayTune:
         print("Best hyperparameter: ", analysis.best_config)
         return analysis
 
+ if __name__ == '__main__':
+    technical_indicator_list = INDICATORS
 
-# pbt = PopulationBasedRayTune(
-# env_config=train_env_config,
-# env_class=StockTradingEnv_numpy,
-# env_name="StockTrainingEnv",
-# model_name="ppo",
-# num_samples=100,
-# training_iterations=100,
-# log_dir="PBT Dir",
-# )
-# pbt_analysis = pb.run_PBT()
+    model_name = 'ppo'
+    env = StockTradingEnv_numpy
+    # ticker_list = ['SPY','TSLA','AAPL','GOOGL']
+    ticker_list = DOW_30_TICKER
+    data_source = 'yahoofinance'
+    time_interval = '1D'
+    TRAIN_START_DATE = '2014-01-01'
+    TRAIN_END_DATE = '2019-07-30'
+
+    VAL_START_DATE = '2019-08-01'
+    VAL_END_DATE = '2020-07-30'
+
+    TEST_START_DATE = '2020-08-01'
+    TEST_END_DATE = '2021-10-01'
+
+    def get_train_env(start_date, end_date, ticker_list, data_source, time_interval, 
+              technical_indicator_list, env, model_name, if_vix = True,
+              **kwargs):
+
+        #fetch data
+        DP = DataProcessor(data_source, **kwargs)
+        data = DP.download_data(ticker_list, start_date, end_date, time_interval)
+        data = DP.clean_data(data)
+        data = DP.add_technical_indicator(data, technical_indicator_list)
+        if if_vix:
+            data = DP.add_vix(data)
+        price_array, tech_array, turbulence_array = DP.df_to_array(data, if_vix)
+        train_env_config = {'price_array':price_array,
+                  'tech_array':tech_array,
+                  'turbulence_array':turbulence_array,
+                  'if_train':True}
+
+        return train_env_config
+
+    def calculate_sharpe(episode_reward:list):
+      perf_data = pd.DataFrame(data=episode_reward,columns=['reward'])
+      perf_data['daily_return'] = perf_data['reward'].pct_change(1)
+      if perf_data['daily_return'].std() !=0:
+        sharpe = (252**0.5)*perf_data['daily_return'].mean()/ \
+              perf_data['daily_return'].std()
+        return sharpe
+      else:
+        return 0
+
+    def get_test_config(start_date, end_date, ticker_list, data_source, time_interval, 
+             technical_indicator_list, env, model_name, if_vix = True,
+             **kwargs):
+
+      DP = DataProcessor(data_source, **kwargs)
+      data = DP.download_data(ticker_list, start_date, end_date, time_interval)
+      data = DP.clean_data(data)
+      data = DP.add_technical_indicator(data, technical_indicator_list)
+
+      if if_vix:
+          data = DP.add_vix(data)
+
+      price_array, tech_array, turbulence_array = DP.df_to_array(data, if_vix)
+      test_env_config = {'price_array':price_array,
+                'tech_array':tech_array,
+                'turbulence_array':turbulence_array,'if_train':False}
+      return test_env_config
+    
+    train_env_config = get_train_env(TRAIN_START_DATE, VAL_END_DATE, 
+                     ticker_list, data_source, time_interval, 
+                        technical_indicator_list, env, model_name)
+    test_config = get_test_config(TEST_START_DATE, TEST_END_DATE, ticker_list, data_source, time_interval, 
+         technical_indicator_list, env, model_name, if_vix = True)
+    
+    pbt = PopulationBasedRayTune(
+        env_config=train_env_config,
+        env_class=StockTradingEnv_numpy,
+        env_name="StockTrainingEnv",
+        model_name="ppo",
+        num_samples=100,
+        training_iterations=100,
+        log_dir="PBT Dir",
+        )
+    pb_analysis = pb.run_PBT()
+    pb_analysis.to_csv('PBT.csv')
