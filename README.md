@@ -33,3 +33,20 @@ Now you can run different cases and save results in your Account value folder. A
 python main.py -n 'Amazon' -t 'AMZN'
 ```
 Note: The default environment is for a single stock trading only
+
+
+SOME RESULTS
+
+Sharpe ratio for different stocks
+
+![Sharpe ratio](https://github.com/Athe-kunal/Reinforcement-learning-trading-agent-using-Google-trends-data/blob/main/Account%20Values/sharpe.png)
+
+![Amazon](https://github.com/Athe-kunal/Reinforcement-learning-trading-agent-using-Google-trends-data/blob/main/Account%20Values/Amazon.png)
+
+![Tesla](https://github.com/Athe-kunal/Reinforcement-learning-trading-agent-using-Google-trends-data/blob/main/Account%20Values/Tesla.png)
+
+![Doge Coin](https://github.com/Athe-kunal/Reinforcement-learning-trading-agent-using-Google-trends-data/blob/main/Account%20Values/Dogecoin.png)
+
+![Bitcoin](https://github.com/Athe-kunal/Reinforcement-learning-trading-agent-using-Google-trends-data/blob/main/Account%20Values/Bitcoin.png)
+
+
